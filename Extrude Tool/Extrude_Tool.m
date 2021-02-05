@@ -203,8 +203,8 @@
                 if (first < second) { return NSOrderedAscending; }
 
                 // Then sort by node index
-                first = [a.parent indexOfNode:a];
-                second = [b.parent indexOfNode:b];
+                first = [a.parentPath indexOfNode:a];
+                second = [b.parentPath indexOfNode:b];
                 if (first > second) { return NSOrderedDescending; }
                 if (first < second) { return NSOrderedAscending; }
                 return NSOrderedSame;
@@ -271,8 +271,8 @@
                 // Insert nodes at front and back of selection
                 // shift the last index +1 because a node was inserted before it,
                 // or don't if the selection crosses bounds (the first / last nodes are effectively flipped)
-                [path insertNode:firstHolder atIndex:firstIndex];
-                [path insertNode:lastHolder atIndex:lastIndex + 1 - offset];
+                [path insertObject:firstHolder inNodesAtIndex:firstIndex];
+                [path insertObject:lastHolder inNodesAtIndex:lastIndex + 1 - offset];
 
                 [[path nodeAtIndex:firstIndex + offset] setConnection:SHARP];
                 [[path nodeAtIndex:firstIndex + offset + 1] setConnection:SHARP];
